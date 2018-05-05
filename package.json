@@ -51,9 +51,9 @@
     "sp-pnp-js": "^3.0.7"
   },
   "bugs": {
-    "url": "https://github.com/SharePoint/PnP-JS-Core/issues"
+    "url": "https://github.com/mcssoftware/LmsCore/issues"
   },
-  "homepage": "https://github.com/SharePoint/PnP-JS-Core",
+  "homepage": "https://github.com/mcssoftware/LmsCore",
   "browser": {
     "./lib/net/nodefetchclient.js": "./lib/net/nodefetchclientbrowser.js"
   }
