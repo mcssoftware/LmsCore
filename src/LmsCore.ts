@@ -6,5 +6,5 @@ import { McsUtil } from "./libraries/util";
 // // tslint:disable-next-line:typedef
 // export const constants = Constants;
 
-export * from "./interfaces";
-export * from "./api";
+export * from "./exports/interfaces";
+export * from "./exports/api";

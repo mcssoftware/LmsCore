@@ -1,7 +1,7 @@
 // tslint:disable-next-line:no-reference
 /// <reference path="./../../node_modules/@types/sharepoint/index.d.ts" />
-import { IDictionary, ISpDependency, IBills, IWorkflowDefinition, IUser } from "./../interfaces";
 import * as pnp from "sp-pnp-js";
+import { IBills, IWorkflowDefinition, IUser } from "../interfaces/ListDefinitions";
 
 // tslint:disable-next-line:typedef
 const toString = Object.prototype.toString;
