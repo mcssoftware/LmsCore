@@ -1,5 +1,5 @@
 {
-  "name": "LmsCore",
+  "name": "mcs-lms-core",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.10",
+    "npm": "^6.0.0",
     "sp-pnp-js": "^3.0.7"
   },
   "bugs": {

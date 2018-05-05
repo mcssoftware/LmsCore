@@ -201,7 +201,5 @@ export class PnpUtil {
     }
 }
 
-// tslint:disable:no-empty
-(window as any)._warningCallback = (): void => { };
 // tslint:disable-next-line:typedef
 export const pnputil = new PnpUtil();
