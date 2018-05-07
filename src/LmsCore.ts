@@ -8,3 +8,4 @@ export const constants = Constants;
 
 export * from "./exports/interfaces";
 export * from "./exports/api";
+export * from "./exports/libraries";

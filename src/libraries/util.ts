@@ -184,22 +184,3 @@ export class McsUtil {
     }
 
 }
-
-// tslint:disable-next-line:max-classes-per-file
-export class PnpUtil {
-    private lmsUrl: string;
-    private rootUrl: string;
-    public setupUrl(siteUrl: string, webUrl: string): void {
-        this.lmsUrl = webUrl;
-        this.rootUrl = siteUrl;
-    }
-    public getLmsUrl(): string {
-        return this.lmsUrl;
-    }
-    public getSiteUrl(): string {
-        return this.rootUrl;
-    }
-}
-
-// tslint:disable-next-line:typedef
-export const pnputil = new PnpUtil();

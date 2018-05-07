@@ -2,7 +2,7 @@ import { ILmsTaskApi, ISubjectIndices } from "../../interfaces";
 import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";
 import { Constants } from "../../configuration/constants";
-import { pnputil } from "../../libraries/util";
+import { settings } from "../../configuration/configuration";
 
 export class SubjectIndexApi extends ListBaseApi<ISubjectIndices> {
     constructor() {
@@ -12,7 +12,7 @@ export class SubjectIndexApi extends ListBaseApi<ISubjectIndices> {
     }
 
     public getWeb(): Web {
-        return new Web(pnputil.getSiteUrl());
+        return new Web(settings.getSiteUrl());
     }
 
     public getSelects(): string[] {

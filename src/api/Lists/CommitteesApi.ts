@@ -3,7 +3,8 @@ import * as pnp from "sp-pnp-js";
 import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";
 import { Constants } from "../../configuration/constants";
-import { McsUtil, pnputil } from "../../libraries/util";
+import { McsUtil } from "../../libraries/util";
+import { settings } from "../../configuration/configuration";
 import { LmsConfigurationApi } from "./LmsConfigurationApi";
 import { EventEmitter } from "../../libraries/EventEmitter";
 
@@ -19,7 +20,7 @@ export class CommitteesApi extends ListBaseApi<ICommittee> {
     }
 
     public getWeb(): Web {
-        return new Web(pnputil.getSiteUrl());
+        return new Web(settings.getSiteUrl());
     }
 
     public getCommittees(year?: number): Promise<ICommittee[]> {

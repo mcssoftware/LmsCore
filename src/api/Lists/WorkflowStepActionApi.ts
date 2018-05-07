@@ -2,7 +2,7 @@ import { ListBaseApi } from "./ListBaseApi";
 import { IWorkflowDefinitionStepAction, IWorkflowStepActionApi } from "../../interfaces/index";
 import { Constants } from "../../configuration/constants";
 import { Web } from "sp-pnp-js";
-import { pnputil } from "../../libraries/util";
+import { settings } from "../../configuration/configuration";
 
 export class WorkflowStepActionApi extends ListBaseApi<IWorkflowDefinitionStepAction> implements IWorkflowStepActionApi {
     constructor() {
@@ -12,7 +12,7 @@ export class WorkflowStepActionApi extends ListBaseApi<IWorkflowDefinitionStepAc
     }
 
     public getWeb(): Web {
-        return new Web(pnputil.getSiteUrl());
+        return new Web(settings.getSiteUrl());
     }
 
     public getWorkflowStepActionIdForStep(stepId: number): Promise<number[]> {

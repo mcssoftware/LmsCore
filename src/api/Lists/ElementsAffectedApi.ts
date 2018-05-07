@@ -2,7 +2,7 @@ import { ILmsTaskApi, IElementsAffected, IElementsAffectedApi } from "../../inte
 import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";
 import { Constants } from "../../configuration/constants";
-import { pnputil } from "../../libraries/util";
+import { settings } from "../../configuration/configuration";
 
 export class ElementsAffectedApi extends ListBaseApi<IElementsAffected> implements IElementsAffectedApi {
 
@@ -13,7 +13,7 @@ export class ElementsAffectedApi extends ListBaseApi<IElementsAffected> implemen
     }
 
     public getWeb(): Web {
-        return new Web(pnputil.getLmsUrl());
+        return new Web(settings.getLmsUrl());
     }
 
     public getElementsAffectedForBill(billId: number): Promise<IElementsAffected[]> {

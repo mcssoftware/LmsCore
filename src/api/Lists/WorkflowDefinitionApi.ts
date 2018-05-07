@@ -3,7 +3,7 @@ import * as pnp from "sp-pnp-js";
 import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";
 import { Constants } from "../../configuration/constants";
-import { pnputil } from "../../libraries/util";
+import { settings } from "../../configuration/configuration";
 
 export class WorkflowDefinitionApi extends ListBaseApi<IWorkflowDefinition> implements IWorkflowDefinitionApi {
     constructor() {
@@ -13,7 +13,7 @@ export class WorkflowDefinitionApi extends ListBaseApi<IWorkflowDefinition> impl
     }
 
     public getWeb(): Web {
-        return new Web(pnputil.getSiteUrl());
+        return new Web(settings.getSiteUrl());
     }
 
     public getSteps(...stepNumbers: number[]): Promise<IWorkflowDefinition[]> {

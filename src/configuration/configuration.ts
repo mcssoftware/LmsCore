@@ -12,3 +12,5 @@ export class Settings {
         return this.rootUrl;
     }
 }
+
+export const settings: Settings = new Settings();

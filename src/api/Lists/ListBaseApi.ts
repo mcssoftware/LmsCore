@@ -1,7 +1,8 @@
 import { IListApi, IList, IContentType } from "../../interfaces";
 import * as pnp from "sp-pnp-js";
 import { TypedHash, PagedItemCollection, Web, ODataBatch, ItemAddResult, ItemUpdateResult } from "sp-pnp-js";
-import { McsUtil, pnputil } from "../../libraries/util";
+import { McsUtil } from "../../libraries/util";
+import { settings } from "../../configuration/configuration";
 
 // tslint:disable:prefer-const
 export class ListBaseApi<T> implements IListApi<T>  {
@@ -9,7 +10,7 @@ export class ListBaseApi<T> implements IListApi<T>  {
     public useCaching: boolean;
 
     public getWeb(): Web {
-        return new Web(pnputil.getLmsUrl());
+        return new Web(settings.getLmsUrl());
     }
 
     public getListItems(filter?: string, select?: string[], expand?: string[], orderBy?: string, ascending?: boolean, skip?: number, top?: number): Promise<T[]> {

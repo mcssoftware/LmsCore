@@ -1,6 +1,6 @@
 import * as pnp from "sp-pnp-js";
 import { Constants } from "../../configuration/constants";
-import { McsUtil, pnputil } from "../../libraries/util";
+import { McsUtil } from "../../libraries/util";
 import { IHttpClientOptions, LmsHttpClient } from "../../libraries/LmsHttpClient";
 
 export class RollCallApi {

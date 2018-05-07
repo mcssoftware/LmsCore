@@ -2,9 +2,9 @@ import { ListBaseApi } from "./ListBaseApi";
 import { McsUtil } from "../../libraries/util";
 import { Constants } from "../../configuration/constants";
 import { Web } from "sp-pnp-js";
-import { pnputil } from "../../libraries/util";
 import { IActionDefinition, IActionDefinitionApi } from "../../interfaces";
 import { BillApi } from "../../LmsCore";
+import { settings } from "../../configuration/configuration";
 
 export class ActionDefinitionApi extends ListBaseApi<IActionDefinition> implements IActionDefinitionApi {
     constructor() {
@@ -14,7 +14,7 @@ export class ActionDefinitionApi extends ListBaseApi<IActionDefinition> implemen
     }
 
     public getWeb(): Web {
-        return new Web(pnputil.getSiteUrl());
+        return new Web(settings.getSiteUrl());
     }
 
     public getActions(idList: number[]): Promise<IActionDefinition[]> {

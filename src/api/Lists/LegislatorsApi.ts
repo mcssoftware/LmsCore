@@ -3,9 +3,10 @@ import * as pnp from "sp-pnp-js";
 import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";
 import { Constants } from "../../configuration/constants";
-import { McsUtil, pnputil } from "../../libraries/util";
+import { McsUtil } from "../../libraries/util";
 import { LmsConfigurationApi } from "./LmsConfigurationApi";
 import { EventEmitter } from "../../libraries/EventEmitter";
+import { settings } from "../../configuration/configuration";
 
 export class LegislatorsApi extends ListBaseApi<ILegislator> {
     private _legislatorHashed: pnp.TypedHash<ILegislator[]> = {};
@@ -19,7 +20,7 @@ export class LegislatorsApi extends ListBaseApi<ILegislator> {
     }
 
     public getWeb(): Web {
-        return new Web(pnputil.getSiteUrl());
+        return new Web(settings.getSiteUrl());
     }
 
     public getLegislators(year?: number): Promise<ILegislator[]> {
