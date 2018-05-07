@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-      "module": "systen",
+      "module": "system",
       "jsx": "react",
       "declaration": true,
       "outFile": "lmscore.js",

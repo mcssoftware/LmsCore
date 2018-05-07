@@ -14,7 +14,13 @@ var gulp = require("gulp"),
 // package the definitions
 gulp.task("package:defs", () => {
 
-    var typingsProject = tsc.createProject('tsconfig.json', { "declaration": true, "outFile": "lmscore.js", "removeComments": false, "module": "system" });
+    var typingsProject = tsc.createProject('tsconfig.json', {
+        "declaration": true,
+        "outFile": "lmscore.js",
+        "removeComments": false,
+        "module": "system",
+        "moduleResolution": "node"
+    });
 
     gulp.src(config.paths.sourceGlob).pipe(typingsProject()).dts.pipe(gulp.dest(config.paths.dist));
 });
