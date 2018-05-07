@@ -8,18 +8,17 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
-    // "typeRoots": [
-    //   "./node_modules/@types",
-    //   "./node_modules/@microsoft"
-    // ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/@microsoft",
+      "./node_modules"
+    ],
     // "types": [
-    //   "adal",
-    //   "es6-promise",
-    //   "webpack-env"
+    //   "sp-pnp-js"
     // ],
     "lib": [
       "es6",
       "dom"
-    ]
+    ],
   }
 }
