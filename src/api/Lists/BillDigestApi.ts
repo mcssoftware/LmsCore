@@ -1,4 +1,4 @@
-import { IBillDigest, ITasks, IBillDigestApi, ITaskAction } from "../../interfaces/index";
+import { IBillDigest, ITasks, IBillDigestApi, ITaskAction, IBills } from "../../interfaces/index";
 import { Constants } from "../../configuration/constants";
 import { McsUtil } from "../../libraries/util";
 import { ListBaseApi } from "./ListBaseApi";
@@ -8,6 +8,15 @@ export class BillDigestApi extends ListBaseApi<IBillDigest> implements IBillDige
         super();
         this.listTitle = Constants.Lists.BillDigest;
         this.useCaching = false;
+    }
+
+    public getBillDigestForBill(bill: IBills): Promise<IBillDigest[]> {
+        return new Promise<IBillDigest[]>((resolve, reject) => {
+            const filter: string = `BillLookupId eq ${bill.Id} and StatusDate ne null and Duplicate eq 0 and BillDigestReportable eq 1`;
+            this.getListItems(filter, null, null, "StatusDate", false).then((result) => {
+                resolve(result);
+            }, (err) => { reject(err); });
+        });
     }
 
     /**
