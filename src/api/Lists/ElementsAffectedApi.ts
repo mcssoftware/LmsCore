@@ -17,7 +17,7 @@ export class ElementsAffectedApi extends ListBaseApi<IElementsAffected> implemen
     }
 
     public getElementsAffectedForBill(billId: number): Promise<IElementsAffected[]> {
-        return this.getListItems("BillLookupId eq " + billId);
+        return this.getListItems("BillLookupId eq " + billId, this.getSelects(), this.getExpands(), "NewElementNumberDbFormat");
     }
 
     public getDuplicates(elements: IElementsAffected[]): Promise<IElementsAffected[]> {
@@ -28,8 +28,11 @@ export class ElementsAffectedApi extends ListBaseApi<IElementsAffected> implemen
             const filter: string[][] = [[]];
             let index: number = 0;
             let filterLength: number = 0;
-            elements.forEach((element) => {
-                const value: string = "NewElementNumberDbFormat eq '" + element.NewElementNumberDbFormat + "'";
+            const uniqueValues: string[] = elements.map((e) => e.NewElementNumberDbFormat).sort().filter((value, idx, self) => {
+                return self.indexOf(value) === idx;
+            });
+            uniqueValues.forEach((element) => {
+                const value: string = "NewElementNumberDbFormat eq '" + element + "'";
                 filter[index].push(value);
                 filterLength += value.length;
                 if (filterLength > 500) {
@@ -45,7 +48,15 @@ export class ElementsAffectedApi extends ListBaseApi<IElementsAffected> implemen
                 values.forEach((value) => {
                     result = result.concat(value);
                 });
-                resolve(result);
+                resolve(result.sort((a, b) => {
+                    if (a.NewElementNumberDbFormat < b.NewElementNumberDbFormat) {
+                        return -1;
+                    }
+                    if (a.NewElementNumberDbFormat > b.NewElementNumberDbFormat) {
+                        return 1;
+                    }
+                    return 0;
+                }));
             }, (err) => { reject(err); });
         });
         // return this.getListItems("BillLookupId eq " + billId);

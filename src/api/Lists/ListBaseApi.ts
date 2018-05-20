@@ -101,6 +101,12 @@ export class ListBaseApi<T> implements IListApi<T>  {
         return this.getWeb().lists.getByTitle(this.listTitle).items.getById(id).delete();
     }
 
+    public ensureListItemEntityTypeName(listItemEntityTypeFullName?: string): Promise<string> {
+        return listItemEntityTypeFullName ?
+            Promise.resolve(listItemEntityTypeFullName) :
+            this.getWeb().lists.getByTitle(this.listTitle).getListItemEntityTypeFullName();
+    }
+
     public addNewItemInBatch(batch: ODataBatch, properties: TypedHash<any>): Promise<ItemAddResult> {
         return this.getWeb().lists.getByTitle(this.listTitle).items.inBatch(batch).add(properties);
     }
