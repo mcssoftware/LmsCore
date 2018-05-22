@@ -37,6 +37,11 @@ export class MockBaseApi<T> implements IListApi<T>  {
         });
     }
 
+    public ensureListItemEntityTypeName(listItemEntityTypeFullName?: string): Promise<string> {
+        return listItemEntityTypeFullName ?
+            Promise.resolve(listItemEntityTypeFullName) :
+            Promise.resolve("EntityFullName");
+    }
 
     public getListItemById(id: number): Promise<T> {
         return new Promise<T>((resolve, reject) => {

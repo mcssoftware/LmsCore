@@ -188,6 +188,7 @@ export interface ITasks extends IListItem {
     StepType: string;
     TaskProperties?: string;
     WorkflowStep?: IWorkflowDefinition;
+    CalendarOrder: number;
 }
 
 export interface ILegislator extends IListItem {
@@ -447,8 +448,4 @@ export interface IAmendmentEntity extends IAmendments {
     Disposition: string;
     Chamber: string;
     amendType: JccAmendType;
-}
-
-export interface IReportDefinition extends IListItem {
-    ReportDefinition: string;
 }

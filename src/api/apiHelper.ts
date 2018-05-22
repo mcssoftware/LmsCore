@@ -1,6 +1,6 @@
 import { ILmsConfigurationApi } from "../interfaces/ILmsConfigurationApi";
 import { IListApi } from "../interfaces/IListApi";
-import { IBillDraftRequest, ISequenceNumbers, IReportDefinition, IDocumentItem } from "../interfaces/ListDefinitions";
+import { IBillDraftRequest, ISequenceNumbers, IDocumentItem } from "../interfaces/ListDefinitions";
 import { ILmsTaskApi } from "../interfaces/ILmsTaskApi";
 import { IBillApi } from "../interfaces/IBillApi";
 import { IWorkflowDefinitionApi } from "../interfaces/IWorkflowDefinitionApi";
@@ -53,7 +53,6 @@ import { CommitteesApi } from "./Lists/CommitteesApi";
 import { MockCommitteesApi } from "./Mock/MockCommitteesApi";
 import { ListBaseApi } from "./Lists/ListBaseApi";
 import { SessionLawsApi } from "./Lists/SessionLawsApi";
-import { ReportDefinitionApi } from "./Lists/ReportDefinitionApi";
 import { IRollCallApi } from "../interfaces/IRollCallApi";
 import { DocumentLibraryApi } from "./Lists/DocumentLibraryApi";
 
@@ -120,10 +119,6 @@ export class ApiHelper {
 
     public getSessionLawsApi(isLocalEnvironment: boolean): ISessionLawsApi {
         return new SessionLawsApi();
-    }
-
-    public getReportDefinitionApi(isLocalEnvironment: boolean): IListApi<IReportDefinition> {
-        return new ReportDefinitionApi();
     }
 
     public getDocumentLibraryApi(listTitle: string): ListBaseApi<IDocumentItem> {

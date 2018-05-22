@@ -89,6 +89,12 @@ export class MockLmsConfigurationApi extends MockBaseApi<ILmsItemConfiguration> 
         return [];
     }
 
+    public getYear(year?: number): Promise<number> {
+        return new Promise((resolve, reject) => {
+            resolve(year || 2019);
+        });
+    }
+
     public getConfiguration(year?: number): Promise<ILmsConfiguration> {
         return new Promise((resolve, reject) => {
             if (McsUtil.isDefined(year)) {

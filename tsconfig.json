@@ -13,9 +13,6 @@
       "./node_modules/@microsoft",
       "./node_modules"
     ],
-    // "types": [
-    //   "sp-pnp-js"
-    // ],
     "lib": [
       "es6",
       "dom"

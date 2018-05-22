@@ -3,6 +3,7 @@ import * as pnp from "sp-pnp-js";
 import { TypedHash, PagedItemCollection, Web, ODataBatch, ItemAddResult, ItemUpdateResult } from "sp-pnp-js";
 import { McsUtil } from "../../libraries/util";
 import { settings } from "../../configuration/configuration";
+import { config } from "../../LmsCore";
 
 // tslint:disable:prefer-const
 export class ListBaseApi<T> implements IListApi<T>  {
@@ -10,7 +11,7 @@ export class ListBaseApi<T> implements IListApi<T>  {
     public useCaching: boolean;
 
     public getWeb(): Web {
-        return new Web(settings.getLmsUrl());
+        return new Web(config.getLmsUrl());
     }
 
     public getListItems(filter?: string, select?: string[], expand?: string[], orderBy?: string, ascending?: boolean, skip?: number, top?: number): Promise<T[]> {
@@ -99,6 +100,12 @@ export class ListBaseApi<T> implements IListApi<T>  {
 
     public deleteItem(id: number): Promise<void> {
         return this.getWeb().lists.getByTitle(this.listTitle).items.getById(id).delete();
+    }
+
+    public ensureListItemEntityTypeName(listItemEntityTypeFullName?: string): Promise<string> {
+        return listItemEntityTypeFullName ?
+            Promise.resolve(listItemEntityTypeFullName) :
+            this.getWeb().lists.getByTitle(this.listTitle).getListItemEntityTypeFullName();
     }
 
     public addNewItemInBatch(batch: ODataBatch, properties: TypedHash<any>): Promise<ItemAddResult> {
