@@ -1,5 +1,5 @@
 import { Web, TypedHash, ODataBatch, ItemAddResult, ItemUpdateResult } from "sp-pnp-js";
-import { IContentType, IList } from "./index";
+import { IContentType, IList } from "../exports/interfaces";
 // import pnp from "sp-pnp-js";
 
 // tslint:disable:no-shadowed-variable

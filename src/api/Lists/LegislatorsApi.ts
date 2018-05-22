@@ -1,4 +1,4 @@
-import { ILegislator } from "../../interfaces";
+import { ILegislator } from "../../exports/interfaces";
 import * as pnp from "sp-pnp-js";
 import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";
@@ -74,7 +74,7 @@ export class LegislatorsApi extends ListBaseApi<ILegislator> {
                 });
                 if (!McsUtil.isDefined(this._legislatorStatus[year])) {
                     this._legislatorStatus[year] = "Loading";
-                    this.getListItems("BillYear eq " + year, null, null, "LegislatureDisplayName")
+                    this.getListItems("BillYear eq " + year)
                         .then((data: ILegislator[]) => {
                             this._legislatorHashed[year] = data;
                             this._legislatorStatus[year] = "Loaded";

@@ -1,4 +1,4 @@
-import { IListApi, IBills } from "./";
+import { IListApi, IBills } from "../exports/interfaces";
 
 export interface IBillApi extends IListApi<IBills> {
     getBill(billorLsonumber: string): Promise<IBills>;

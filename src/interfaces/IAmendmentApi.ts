@@ -1,4 +1,4 @@
-import { IListApi, IAmendments } from "./";
+import { IListApi, IAmendments } from "../exports/interfaces";
 
 export interface IAmendmentApi extends IListApi<IAmendments> {
     getAmendmentsForBill(billId: number): Promise<IAmendments[]>;

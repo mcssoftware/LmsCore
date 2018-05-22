@@ -448,3 +448,7 @@ export interface IAmendmentEntity extends IAmendments {
     Chamber: string;
     amendType: JccAmendType;
 }
+
+export interface IReportDefinition extends IListItem {
+    ReportDefinition: string;
+}

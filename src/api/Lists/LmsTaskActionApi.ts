@@ -1,4 +1,4 @@
-import { ITaskAction, IWorkflowStepActionApi } from "../../interfaces/index";
+import { ITaskAction, IWorkflowStepActionApi } from "../../exports/interfaces";
 import { Constants } from "../../configuration/constants";
 import { ListBaseApi } from "./ListBaseApi";
 

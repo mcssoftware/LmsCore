@@ -1,6 +1,6 @@
 import { ListBaseApi } from "./ListBaseApi";
 import { Constants } from "../../configuration/constants";
-import { IAmendments, IAmendmentApi } from "../../interfaces";
+import { IAmendments, IAmendmentApi } from "../../exports/interfaces";
 import { McsUtil } from "../../libraries/util";
 import { FileAddResult, Item, ItemUpdateResult } from "sp-pnp-js";
 

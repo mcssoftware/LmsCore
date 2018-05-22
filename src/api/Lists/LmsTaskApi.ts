@@ -1,4 +1,4 @@
-import { ITasks, ILmsTaskApi } from "../../interfaces";
+import { ITasks, ILmsTaskApi } from "../../exports/interfaces";
 import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";
 import { Constants } from "../../configuration/constants";

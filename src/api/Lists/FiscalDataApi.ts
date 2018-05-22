@@ -2,7 +2,7 @@ import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";
 import { Constants } from "../../configuration/constants";
 import { settings } from "../../configuration/configuration";
-import { IAgencyContact, IFiscalFund, IFiscalSeries } from "../../interfaces";
+import { IAgencyContact, IFiscalFund, IFiscalSeries } from "../../exports/interfaces";
 // tslint:disable:max-classes-per-file
 
 export class AgencyContactApi extends ListBaseApi<IAgencyContact> {

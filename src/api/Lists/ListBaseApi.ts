@@ -1,4 +1,4 @@
-import { IListApi, IList, IContentType } from "../../interfaces";
+import { IListApi, IList, IContentType } from "../../exports/interfaces";
 import * as pnp from "sp-pnp-js";
 import { TypedHash, PagedItemCollection, Web, ODataBatch, ItemAddResult, ItemUpdateResult } from "sp-pnp-js";
 import { McsUtil } from "../../libraries/util";
@@ -99,12 +99,6 @@ export class ListBaseApi<T> implements IListApi<T>  {
 
     public deleteItem(id: number): Promise<void> {
         return this.getWeb().lists.getByTitle(this.listTitle).items.getById(id).delete();
-    }
-
-    public ensureListItemEntityTypeName(listItemEntityTypeFullName?: string): Promise<string> {
-        return listItemEntityTypeFullName ?
-            Promise.resolve(listItemEntityTypeFullName) :
-            this.getWeb().lists.getByTitle(this.listTitle).getListItemEntityTypeFullName();
     }
 
     public addNewItemInBatch(batch: ODataBatch, properties: TypedHash<any>): Promise<ItemAddResult> {

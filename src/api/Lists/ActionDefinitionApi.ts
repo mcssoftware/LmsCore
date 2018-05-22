@@ -2,8 +2,7 @@ import { ListBaseApi } from "./ListBaseApi";
 import { McsUtil } from "../../libraries/util";
 import { Constants } from "../../configuration/constants";
 import { Web } from "sp-pnp-js";
-import { IActionDefinition, IActionDefinitionApi } from "../../interfaces";
-import { BillApi } from "../../LmsCore";
+import { IActionDefinition, IActionDefinitionApi } from "../../exports/interfaces";
 import { settings } from "../../configuration/configuration";
 
 export class ActionDefinitionApi extends ListBaseApi<IActionDefinition> implements IActionDefinitionApi {

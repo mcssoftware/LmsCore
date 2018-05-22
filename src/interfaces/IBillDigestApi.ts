@@ -1,4 +1,4 @@
-import { IBillDigest, IListApi, ITasks, ITaskAction, IBills } from ".";
+import { IBillDigest, IListApi, ITasks, ITaskAction, IBills } from "../exports/interfaces";
 
 export interface IBillDigestApi extends IListApi<IBillDigest> {
     getBillDigestForBill(bill: IBills): Promise<IBillDigest[]>;

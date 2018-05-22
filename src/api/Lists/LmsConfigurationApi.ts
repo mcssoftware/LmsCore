@@ -1,5 +1,5 @@
 import { ListBaseApi } from "./ListBaseApi";
-import { ILmsConfiguration, ILmsItemConfiguration, ILmsConfigurationApi } from "../../interfaces";
+import { ILmsConfiguration, ILmsItemConfiguration, ILmsConfigurationApi } from "../../exports/interfaces";
 import { Web } from "sp-pnp-js";
 import { Constants } from "../../configuration/constants";
 import * as pnp from "sp-pnp-js";

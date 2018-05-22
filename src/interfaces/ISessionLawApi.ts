@@ -1,4 +1,4 @@
-import { IListApi, ISessionLaws } from "./";
+import { IListApi, ISessionLaws } from "../exports/interfaces";
 
 export interface ISessionLawsApi extends IListApi<ISessionLaws> {
     createSessionLaw(sessionLaw: ISessionLaws, blob: Blob): Promise<ISessionLaws>;

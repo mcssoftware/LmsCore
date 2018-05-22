@@ -1,4 +1,4 @@
-import { IWorkflowDefinition, IWorkflowDefinitionApi } from "../../interfaces";
+import { IWorkflowDefinition, IWorkflowDefinitionApi } from "../../exports/interfaces";
 import * as pnp from "sp-pnp-js";
 import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";

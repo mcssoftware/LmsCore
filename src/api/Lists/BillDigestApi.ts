@@ -1,4 +1,4 @@
-import { IBillDigest, ITasks, IBillDigestApi, ITaskAction, IBills } from "../../interfaces/index";
+import { IBillDigest, ITasks, IBillDigestApi, ITaskAction, IBills } from "../../exports/interfaces";
 import { Constants } from "../../configuration/constants";
 import { McsUtil } from "../../libraries/util";
 import { ListBaseApi } from "./ListBaseApi";

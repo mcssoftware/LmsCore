@@ -1,4 +1,4 @@
-import { IContentTypeId } from ".";
+import { IContentTypeId } from "../exports/interfaces";
 
 export interface IList {
     AllowContentTypes: boolean;

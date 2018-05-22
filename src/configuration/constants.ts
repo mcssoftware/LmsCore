@@ -34,6 +34,7 @@ export namespace Constants {
         public static Tasks = "Tasks";
         public static TaskAction = "Task Action";
         public static LmsConfiguration = "WyLsoConfiguration";
+        public static ReportDefinition = "Report Definition";
     }
 
     export class Pages {
