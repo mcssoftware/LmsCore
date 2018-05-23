@@ -13,13 +13,14 @@
       "./node_modules/@microsoft",
       "./node_modules"
     ],
-    "lib": [
-      "es6",
-      "dom"
+    "types": [
+      "es6-promise",
+      "webpack-env"
     ],
-  },
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ]
+    "lib": [
+      "es5",
+      "dom",
+      "es2015.collection"
+    ]
+  }
 }
