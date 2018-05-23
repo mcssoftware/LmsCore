@@ -9,3 +9,4 @@ export * from "./exports/api";
 export * from "./exports/libraries";
 export { WorkflowLogic } from "./services/WorkflowLogic";
 export { Constants } from "./configuration/constants";
+export { tokenProvider} from "./aad/adTokenProvider";

@@ -1,6 +1,9 @@
 import { IListApi, IList, IContentType } from "../../exports/interfaces";
 import * as pnp from "sp-pnp-js";
-import { TypedHash, PagedItemCollection, Web, ODataBatch, ItemAddResult, ItemUpdateResult } from "sp-pnp-js";
+import {
+    TypedHash, PagedItemCollection, Web, ODataBatch,
+    ItemAddResult, ItemUpdateResult,
+} from "sp-pnp-js";
 import { McsUtil } from "../../libraries/util";
 import { settings } from "../../configuration/configuration";
 import { config } from "../../LmsCore";
