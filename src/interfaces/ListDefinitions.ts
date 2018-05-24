@@ -188,6 +188,7 @@ export interface ITasks extends IListItem {
     StepType: string;
     TaskProperties?: string;
     WorkflowStep?: IWorkflowDefinition;
+    CalendarOrder: number;
 }
 
 export interface ILegislator extends IListItem {

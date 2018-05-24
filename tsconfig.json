@@ -13,12 +13,13 @@
       "./node_modules/@microsoft",
       "./node_modules"
     ],
-    // "types": [
-    //   "sp-pnp-js"
-    // ],
+    "types": [
+      // "es6-promise",
+      // "webpack-env"
+    ],
     "lib": [
       "es6",
       "dom"
-    ],
+    ]
   }
 }

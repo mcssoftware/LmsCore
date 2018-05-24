@@ -1,4 +1,4 @@
-import { IListApi, IElementsAffected } from "./";
+import { IListApi, IElementsAffected } from "../exports/interfaces";
 
 export interface IElementsAffectedApi extends IListApi<IElementsAffected> {
     getElementsAffectedForBill(billId: number): Promise<IElementsAffected[]>;

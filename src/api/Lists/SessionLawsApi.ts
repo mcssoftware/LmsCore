@@ -1,4 +1,4 @@
-import { ISessionLaws } from "../../interfaces/index";
+import { ISessionLaws } from "../../exports/interfaces";
 import { Constants } from "../../configuration/constants";
 import { ListBaseApi } from "./ListBaseApi";
 import { Web, File, ItemUpdateResult, FileAddResult, Item, CheckinType } from "sp-pnp-js";

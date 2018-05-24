@@ -1,5 +1,5 @@
 import { ListBaseApi } from "./ListBaseApi";
-import { IWorkflowDefinitionStepAction, IWorkflowStepActionApi } from "../../interfaces/index";
+import { IWorkflowDefinitionStepAction, IWorkflowStepActionApi } from "../../exports/interfaces";
 import { Constants } from "../../configuration/constants";
 import { Web } from "sp-pnp-js";
 import { settings } from "../../configuration/configuration";

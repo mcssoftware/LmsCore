@@ -5,15 +5,15 @@ import {
 } from "sp-pnp-js";
 
 export default class LmsLogger {
-    public static writeInfo(message: string): void {
+    public writeInfo(message: string): void {
         Logger.write(message, LogLevel.Info);
     }
 
-    public static writeWarning(message: string): void {
+    public writeWarning(message: string): void {
         Logger.write(message, LogLevel.Warning);
     }
 
-    public static writeError(message: string): void {
+    public writeError(message: string): void {
         Logger.write(message, LogLevel.Error);
     }
 }

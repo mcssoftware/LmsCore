@@ -1,5 +1,6 @@
-import { IListApi, ILmsConfiguration, ILmsItemConfiguration } from "./index";
+import { IListApi, ILmsConfiguration, ILmsItemConfiguration } from "../exports/interfaces";
 
-export interface ILmsConfigurationApi extends IListApi<ILmsItemConfiguration> {
+export interface ILmsConfigurationApi {
     getConfiguration(year?: number): Promise<ILmsConfiguration>;
+    getYear(year?: number): Promise<number>;
 }

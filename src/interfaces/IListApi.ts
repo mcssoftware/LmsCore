@@ -1,5 +1,5 @@
 import { Web, TypedHash, ODataBatch, ItemAddResult, ItemUpdateResult } from "sp-pnp-js";
-import { IContentType, IList } from "./index";
+import { IContentType, IList } from "../exports/interfaces";
 // import pnp from "sp-pnp-js";
 
 // tslint:disable:no-shadowed-variable
@@ -16,6 +16,7 @@ export interface IListApi<T> {
     addNewItem(properties: TypedHash<any>): Promise<T>;
     updateItem(id: number, listItemEntityTypeFullName: string, properties: TypedHash<any>): Promise<any>;
     deleteItem(id: number): Promise<void>;
+    ensureListItemEntityTypeName(listItemEntityTypeFullName: string): Promise<string>;
     updateItemInBatch(batch: ODataBatch, id: number, listItemEntityTypeFullName: string, properties: TypedHash<any>): Promise<ItemUpdateResult>;
     addNewItemInBatch(batch: ODataBatch, properties: TypedHash<any>): Promise<ItemAddResult>;
 }

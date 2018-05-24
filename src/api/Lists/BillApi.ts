@@ -1,4 +1,4 @@
-import { IBills, IBillApi, IFile } from "../../interfaces";
+import { IBills, IBillApi, IFile } from "../../exports/interfaces";
 import { Web, File, ItemUpdateResult, FileAddResult, Item, CheckinType } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";
 import { Constants } from "../../configuration/constants";

@@ -1,8 +1,8 @@
 import { ListBaseApi } from "./ListBaseApi";
-import { IDocumentItem } from "../../interfaces";
+import { IDocumentItem, IDocumentLibraryApi } from "../../exports/interfaces";
 import { FileAddResult, Item, ItemUpdateResult } from "sp-pnp-js";
 
-export class DocumentLibraryApi extends ListBaseApi<IDocumentItem> {
+export class DocumentLibraryApi extends ListBaseApi<IDocumentItem> implements IDocumentLibraryApi {
     constructor(listTitle: string) {
         super();
         this.listTitle = listTitle;

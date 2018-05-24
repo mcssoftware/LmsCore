@@ -1,4 +1,4 @@
-import { IListApi, ITasks } from "./";
+import { IListApi, ITasks } from "../exports/interfaces";
 
 export interface ILmsTaskApi extends IListApi<ITasks> {
     getTaskForBill(billId: number, skip?: number, top?: number): Promise<ITasks[]>;

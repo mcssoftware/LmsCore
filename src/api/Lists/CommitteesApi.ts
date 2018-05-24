@@ -1,4 +1,4 @@
-import { ICommittee } from "../../interfaces";
+import { ICommittee } from "../../exports/interfaces";
 import * as pnp from "sp-pnp-js";
 import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";

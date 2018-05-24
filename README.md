@@ -16,5 +16,6 @@ git push -u origin master
 git remote add origin https://github.com/mcssoftware/LmsReporting.git
 git push -u origin master
 
-
+gulp package
 npm pack
+npm install ../LmsCore/mcs-lms-core-0.0.1.tgz

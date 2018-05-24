@@ -12,15 +12,15 @@ export default class Cookie {
         this._cookie = document.cookie;
     }
 
-    public static tryGetCookie(cookieId: string): string | undefined {
-        return new Cookie().tryGetCookie(cookieId);
-    }
+    // public tryGetCookie(cookieId: string): string | undefined {
+    //     return new Cookie().tryGetCookie(cookieId);
+    // }
 
-    public static setCookie(id: string, value: string, attributes?: ICookieAttributes): void {
+    public setCookie(id: string, value: string, attributes?: ICookieAttributes): void {
         document.cookie = this.buildCookie(id, value, attributes);
     }
 
-    public static buildCookie(id: string, value: string, attributes?: ICookieAttributes): string {
+    public buildCookie(id: string, value: string, attributes?: ICookieAttributes): string {
         const cookieData: string[] = [];
         if (value.indexOf(" ") !== -1 || value.indexOf(",") !== -1 || value.indexOf(";") !== -1) {
             value = encodeURIComponent(value);

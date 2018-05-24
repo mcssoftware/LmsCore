@@ -1,4 +1,4 @@
-import { ILmsTaskApi, IElementsAffected, IElementsAffectedApi } from "../../interfaces";
+import { ILmsTaskApi, IElementsAffected, IElementsAffectedApi } from "../../exports/interfaces";
 import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";
 import { Constants } from "../../configuration/constants";
