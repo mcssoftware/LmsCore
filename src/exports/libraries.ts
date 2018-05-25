@@ -9,6 +9,5 @@ export * from "../libraries/LmsNumberFormatters";
 export * from "../libraries/TextTokenReplacement";
 export * from "../libraries/util";
 
-export { IADTokenProvider, tokenProvider } from "../aad/adTokenProvider";
 export const lmsLogger: LmsLogger = new LmsLogger();
 export const lmsCookie: Cookie = new Cookie();

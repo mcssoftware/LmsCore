@@ -35,7 +35,6 @@ import { MockSequenceNumbersApi } from "./Mock/MockSequenceNumbersApi";
 import { SequenceNumbersApi } from "./Lists/SequenceNumbersApi";
 import { MockElementsAffectedApi } from "./Mock/MockElementsAffectedApi";
 import { ElementsAffectedApi } from "./Lists/ElementsAffectedApi";
-
 import { ActionDefinitionApi } from "./Lists/ActionDefinitionApi";
 import { MockActionDefinitionApi } from "./Mock/MockActionDefinitionApi";
 import { WorkflowStepActionApi } from "./Lists/WorkflowStepActionApi";
@@ -47,11 +46,10 @@ import { MockBillDigestApi } from "./Mock/MockBillDigestApi";
 import { MockLmsTaskActionApi } from "./Mock/MockLmsTaskActionApi";
 import { LmsTaskActionApi } from "./Lists/LmsTaskActionApi";
 import { RollCallApi } from "./Lists/RollCallApi";
-import { MockRollCallApi } from "./Mock/MockRollCallApi";
-import { MockLegislatorsApi } from "./Mock/MockLegislatorsApi";
-import { LegislatorsApi } from "./Lists/LegislatorsApi";
-import { CommitteesApi } from "./Lists/CommitteesApi";
-import { MockCommitteesApi } from "./Mock/MockCommitteesApi";
+import { mockLegislatorApiInstance } from "./Mock/MockLegislatorsApi";
+import { legislatorApiInstance } from "./Lists/LegislatorsApi";
+import { committeeApiInstance } from "./Lists/CommitteesApi";
+import { mockCommitteeApiInstance } from "./Mock/MockCommitteesApi";
 import { ListBaseApi } from "./Lists/ListBaseApi";
 import { SessionLawsApi } from "./Lists/SessionLawsApi";
 import { IRollCallApi } from "../interfaces/IRollCallApi";
@@ -112,11 +110,11 @@ export class ApiHelper {
     }
 
     public getLegislatorApi(isLocalEnvironment: boolean): ILegislatorsApi {
-        return isLocalEnvironment ? new MockLegislatorsApi() : new LegislatorsApi();
+        return isLocalEnvironment ? mockLegislatorApiInstance : legislatorApiInstance;
     }
 
     public getCommitteeApi(isLocalEnvironment: boolean): ICommitteesApi {
-        return isLocalEnvironment ? new MockCommitteesApi() : new CommitteesApi();
+        return isLocalEnvironment ? mockCommitteeApiInstance : committeeApiInstance;
     }
 
     public getSessionLawsApi(isLocalEnvironment: boolean): ISessionLawsApi {
