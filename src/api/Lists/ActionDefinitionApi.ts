@@ -3,7 +3,7 @@ import { McsUtil } from "../../libraries/util";
 import { Constants } from "../../configuration/constants";
 import { Web } from "sp-pnp-js";
 import { IActionDefinition, IActionDefinitionApi } from "../../exports/interfaces";
-import { settings } from "../../configuration/configuration";
+import { config } from "../../LmsCore";
 
 export class ActionDefinitionApi extends ListBaseApi<IActionDefinition> implements IActionDefinitionApi {
     constructor() {
@@ -13,7 +13,7 @@ export class ActionDefinitionApi extends ListBaseApi<IActionDefinition> implemen
     }
 
     public getWeb(): Web {
-        return new Web(settings.getSiteUrl());
+        return new Web(config.getSiteUrl());
     }
 
     public getActions(idList: number[]): Promise<IActionDefinition[]> {

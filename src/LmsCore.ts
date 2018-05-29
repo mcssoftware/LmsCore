@@ -1,8 +1,7 @@
-import { Settings } from "./configuration/configuration";
 import { Constants } from "./configuration/constants";
 import { McsUtil } from "./libraries/util";
 
-export const config: Settings = new Settings();
+export { settings as config } from "./configuration/configuration";
 
 export * from "./exports/interfaces";
 export * from "./exports/api";

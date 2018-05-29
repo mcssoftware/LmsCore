@@ -34,7 +34,6 @@ export namespace Constants {
         public static Tasks = "Tasks";
         public static TaskAction = "Task Action";
         public static LmsConfiguration = "WyLsoConfiguration";
-        public static ReportDefinition = "Report Definition";
     }
 
     export class Pages {
@@ -62,6 +61,7 @@ export namespace Constants {
         public static FiscalNoteForm = "SitePages/FiscalNote.aspx";
         public static FiscalDirectiveForm = "SitePages/FiscalNoteDirective.aspx";
         public static ElementsAffectedForm = "SitePages/ElementsAffected.aspx";
+        public static UpdategramForm = "SitePages/UpdateStatuteDB.aspx";
     }
 
     export enum SponsorType {
@@ -89,6 +89,7 @@ export namespace Constants {
         public static CreateBill: string = serviceBaseUrl + "api/Lms/Bill/Generate";
         public static GetStatuteElements: string = serviceBaseUrl + "api/Lms/Statute/GetStatuteElements";
         public static InsertStatuteElements: string = serviceBaseUrl + "api/Lms/Statute/UpdateBill";
+        public static GetElementsAffectedFromBill: string = serviceBaseUrl + "api/Lms/Statute/GetElementsAffectedFromBill";
         public static CreateAmendment: string = serviceBaseUrl + "api/Lms/Amendment/Generate";
         public static CreateJccAmendment: string = serviceBaseUrl + "api/Lms/Amendment/GenerateJcc";
         public static ConvertToNumberedAmendment: string = serviceBaseUrl + "api/Lms/Amendment/ConvertToNumbered";
@@ -107,6 +108,10 @@ export namespace Constants {
         public static FiscalNoteYear: string = serviceBaseUrl + "api/FiscalNoteYears";
         public static FiscalNoImpactDocument: string = serviceBaseUrl + "api/Lms/Fiscal/GetFiscalNoImpactDocument";
         public static FiscalImpactDocument: string = serviceBaseUrl + "api/Lms/Fiscal/GetFiscalImpactDocument";
+        public static CreateUpdategram: string = serviceBaseUrl + "api/Lms/Updategram/Create";
+        public static UpdateUpdategram: string = serviceBaseUrl + "api/Lms/Updategram/Update";
+        public static GetUpdategramByLsoNumber: string = serviceBaseUrl + "api/Lms/Updategram/GetByLsonumber";
+        public static GenerateWaiverOfPrivilage: string = serviceBaseUrl + "api/Lms/Bill/GenerateWaiver";
     }
 
     export class LmsTemplates {
@@ -125,5 +130,6 @@ export namespace Constants {
         public static MemoToSponsorTemplateFileName: string = "LMSTemplates/MemoToSponsor.docx";
         public static JccTemplateUrl: string = "LMSTemplates/Joint Conference Committee Report.docx";
         public static ProposedAmendmentTemplateUrl: string = "LMSTemplates/Proposed Amendment.docx";
+        public static WaiverofPrivilegeTemplateUrl: string = "LMSTemplates/Waiver of Privilege.docx";
     }
 }

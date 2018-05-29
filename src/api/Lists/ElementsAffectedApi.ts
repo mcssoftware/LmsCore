@@ -2,7 +2,7 @@ import { ILmsTaskApi, IElementsAffected, IElementsAffectedApi } from "../../expo
 import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";
 import { Constants } from "../../configuration/constants";
-import { settings } from "../../configuration/configuration";
+import { config } from "../../LmsCore";
 
 export class ElementsAffectedApi extends ListBaseApi<IElementsAffected> implements IElementsAffectedApi {
 
@@ -13,7 +13,7 @@ export class ElementsAffectedApi extends ListBaseApi<IElementsAffected> implemen
     }
 
     public getWeb(): Web {
-        return new Web(settings.getLmsUrl());
+        return new Web(config.getLmsUrl());
     }
 
     public getElementsAffectedForBill(billId: number): Promise<IElementsAffected[]> {

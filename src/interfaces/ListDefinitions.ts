@@ -449,3 +449,56 @@ export interface IAmendmentEntity extends IAmendments {
     Chamber: string;
     amendType: JccAmendType;
 }
+
+export interface IUpdateGram {
+    Id?: number;
+    Year?: number;
+    BillId?: number;
+    ReviewedBy?: string;
+    DatabaseUpdatedBy?: string;
+    ReviewedDate?: string;
+    DatabaseUpdatedDate?: string;
+    ModifiedBy?: string;
+    ModifiedDate?: string;
+    Bill?: IBills;
+    SectionElementAffecteds?: ISectionElementAffected[];
+    UpdateGramElements?: IUpdateGramElement[];
+    UpdateGramSections?: IUpdateGramSection[];
+}
+
+export interface ISectionElementAffected {
+    Id?: number;
+    Element?: string;
+    ElementAs?: string;
+    Type?: string;
+    Intro?: boolean;
+    IntroSpecified?: boolean;
+    IsRenumber?: boolean;
+    EffectiveDate?: string;
+    UpdateGramSectionId?: number;
+    UpdateGramId?: number;
+    UpdateGram?: IUpdateGram;
+    UpdateGramSection?: IUpdateGramSection;
+    UpdateGramElements?: IUpdateGramElement[];
+}
+
+export interface IUpdateGramElement {
+    Id?: number;
+    Element?: string;
+    ElementAs?: string;
+    DisplayNumber?: string;
+    TitleText?: string;
+    BodyText?: string;
+    SectionElementAffectedId?: number;
+    UpdateGramId?: number;
+    SectionElementAffected?: ISectionElementAffected;
+    UpdateGram?: IUpdateGram;
+}
+
+export interface IUpdateGramSection {
+    Id?: number;
+    Type?: string;
+    UpdateGramId?: number;
+    SectionElementAffecteds?: ISectionElementAffected[];
+    UpdateGram?: IUpdateGram;
+}

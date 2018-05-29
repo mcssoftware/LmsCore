@@ -4,7 +4,7 @@ import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";
 import { Constants } from "../../configuration/constants";
 import { McsUtil } from "../../libraries/util";
-import { settings } from "../../configuration/configuration";
+import { config } from "../../LmsCore";
 import { LmsConfigurationApi } from "./LmsConfigurationApi";
 import { EventEmitter } from "../../libraries/EventEmitter";
 
@@ -20,7 +20,7 @@ export class CommitteesApi extends ListBaseApi<ICommittee> {
     }
 
     public getWeb(): Web {
-        return new Web(settings.getSiteUrl());
+        return new Web(config.getSiteUrl());
     }
 
     public getCommittees(year?: number): Promise<ICommittee[]> {

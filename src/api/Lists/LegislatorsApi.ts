@@ -6,7 +6,8 @@ import { Constants } from "../../configuration/constants";
 import { McsUtil } from "../../libraries/util";
 import { LmsConfigurationApi } from "./LmsConfigurationApi";
 import { EventEmitter } from "../../libraries/EventEmitter";
-import { settings } from "../../configuration/configuration";
+// import { config } from "../../LmsCore";
+import { config } from "../../LmsCore";
 
 export class LegislatorsApi extends ListBaseApi<ILegislator> {
     private _legislatorHashed: pnp.TypedHash<ILegislator[]> = {};
@@ -20,7 +21,7 @@ export class LegislatorsApi extends ListBaseApi<ILegislator> {
     }
 
     public getWeb(): Web {
-        return new Web(settings.getSiteUrl());
+        return new Web(config.getSiteUrl());
     }
 
     public getLegislators(year?: number): Promise<ILegislator[]> {

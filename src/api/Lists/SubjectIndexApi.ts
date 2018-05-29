@@ -2,7 +2,7 @@ import { ILmsTaskApi, ISubjectIndices } from "../../exports/interfaces";
 import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";
 import { Constants } from "../../configuration/constants";
-import { settings } from "../../configuration/configuration";
+import { config } from "../../LmsCore";
 
 export class SubjectIndexApi extends ListBaseApi<ISubjectIndices> {
     constructor() {
@@ -12,7 +12,7 @@ export class SubjectIndexApi extends ListBaseApi<ISubjectIndices> {
     }
 
     public getWeb(): Web {
-        return new Web(settings.getSiteUrl());
+        return new Web(config.getSiteUrl());
     }
 
     public getSelects(): string[] {

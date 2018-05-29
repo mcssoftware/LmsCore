@@ -1,7 +1,7 @@
 import { Web } from "sp-pnp-js";
 import { ListBaseApi } from "./ListBaseApi";
 import { Constants } from "../../configuration/constants";
-import { settings } from "../../configuration/configuration";
+import { config } from "../../LmsCore";
 import { IAgencyContact, IFiscalFund, IFiscalSeries } from "../../exports/interfaces";
 // tslint:disable:max-classes-per-file
 
@@ -13,7 +13,7 @@ export class AgencyContactApi extends ListBaseApi<IAgencyContact> {
     }
 
     public getWeb(): Web {
-        return new Web(settings.getSiteUrl());
+        return new Web(config.getSiteUrl());
     }
 
     public getSelects(): string[] {
@@ -45,7 +45,7 @@ export class FiscalFundApi extends ListBaseApi<IFiscalFund> {
     }
 
     public getWeb(): Web {
-        return new Web(settings.getSiteUrl());
+        return new Web(config.getSiteUrl());
     }
 
     public getSelects(): string[] {
@@ -67,7 +67,7 @@ export class FiscalSeriesApi extends ListBaseApi<IFiscalSeries> {
     }
 
     public getWeb(): Web {
-        return new Web(settings.getSiteUrl());
+        return new Web(config.getSiteUrl());
     }
 
     public getSelects(): string[] {

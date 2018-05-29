@@ -1,6 +1,6 @@
 {
   "name": "mcs-lms-core",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "",
   "main": "./lib/LmsCore.js",
   "types": "./lib/LmsCore.d.ts",

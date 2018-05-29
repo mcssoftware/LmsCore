@@ -49,6 +49,7 @@ export class LmsTaskApi extends ListBaseApi<ITasks> implements ILmsTaskApi {
             "WorkflowStepNumber",
             "StepType",
             "TaskProperties",
+            "CalendarOrder",
         ]).concat(this.getUserSelectForExpand("AssignedTo"));
     }
 

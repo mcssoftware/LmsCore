@@ -5,7 +5,6 @@ import {
     ItemAddResult, ItemUpdateResult,
 } from "sp-pnp-js";
 import { McsUtil } from "../../libraries/util";
-import { settings } from "../../configuration/configuration";
 import { config } from "../../LmsCore";
 
 // tslint:disable:prefer-const

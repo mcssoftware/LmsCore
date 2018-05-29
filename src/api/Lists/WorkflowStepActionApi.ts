@@ -2,7 +2,7 @@ import { ListBaseApi } from "./ListBaseApi";
 import { IWorkflowDefinitionStepAction, IWorkflowStepActionApi } from "../../exports/interfaces";
 import { Constants } from "../../configuration/constants";
 import { Web } from "sp-pnp-js";
-import { settings } from "../../configuration/configuration";
+import { config } from "../../LmsCore";
 
 export class WorkflowStepActionApi extends ListBaseApi<IWorkflowDefinitionStepAction> implements IWorkflowStepActionApi {
     constructor() {
@@ -12,7 +12,7 @@ export class WorkflowStepActionApi extends ListBaseApi<IWorkflowDefinitionStepAc
     }
 
     public getWeb(): Web {
-        return new Web(settings.getSiteUrl());
+        return new Web(config.getSiteUrl());
     }
 
     public getWorkflowStepActionIdForStep(stepId: number): Promise<number[]> {
