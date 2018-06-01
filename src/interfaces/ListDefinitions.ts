@@ -119,6 +119,7 @@ export interface IBillDraftRequest extends IListItem {
     SponsorshipClause: string;
     SponsorTitle: string;
     SponsorType: string;
+    SelectTopic?: string;
 }
 
 export interface IBills extends IDocumentItem {

@@ -59,6 +59,7 @@ export class BillDraftApi extends ListBaseApi<IBillDraftRequest> {
             "SponsorshipClause",
             "SponsorTitle",
             "SponsorType",
+            "SelectTopic",
         ]).concat(this.getUserSelectForExpand("Drafter"));
     }
 

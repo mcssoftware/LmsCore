@@ -1,4 +1,4 @@
-import { IListApi, IListItem, IList, IContentType } from "../../exports/interfaces";
+import { IListApi, IListItem, IList, IContentType, IBatchCreationData, IBatchUpdateData, IBatchDeleteData } from "../../exports/interfaces";
 import * as pnp from "sp-pnp-js";
 import { TypedHash, PagedItemCollection, Web, ODataBatch, ItemUpdateResult, ItemAddResult } from "sp-pnp-js";
 import { McsUtil } from "../../libraries/util";
@@ -119,18 +119,18 @@ export class MockBaseApi<T> implements IListApi<T>  {
         });
     }
 
-    public addNewItemInBatch(batch: ODataBatch, properties: TypedHash<any>): Promise<ItemAddResult> {
-        return new Promise<ItemAddResult>((resolve, reject) => {            
+    public addNewItemInBatch(data: IBatchCreationData[], itemEntityType?: string): Promise<IBatchCreationData[]> {
+        return new Promise((resolve, reject) => {
         });
     }
-
-    public updateItemInBatch(batch: ODataBatch, id: number, listItemEntityTypeFullName: string, properties: TypedHash<any>): Promise<ItemUpdateResult> {
+    public updateItemInBatch(data: IBatchUpdateData[]): Promise<IBatchUpdateData[]> {
         return new Promise((resolve, reject) => {
         });
     }
 
-    public getBatch(): ODataBatch {
-        return null; // batch does not work in MOCK
+    public deleteItemInBatch(data: IBatchDeleteData[]): Promise<void> {
+        return new Promise((resolve, reject) => {
+        });
     }
 
     public getSelects(): string[] {

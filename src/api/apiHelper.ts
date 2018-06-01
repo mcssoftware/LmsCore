@@ -1,6 +1,9 @@
 import { ILmsConfigurationApi } from "../interfaces/ILmsConfigurationApi";
 import { IListApi } from "../interfaces/IListApi";
-import { IBillDraftRequest, ISequenceNumbers, IDocumentItem, IAgencyContact, IFiscalSeries, IFiscalFund } from "../interfaces/ListDefinitions";
+import {
+    IBillDraftRequest, ISequenceNumbers, IDocumentItem, IAgencyContact,
+    IFiscalSeries, IFiscalFund, ISubjectIndices,
+} from "../interfaces/ListDefinitions";
 import { ILmsTaskApi } from "../interfaces/ILmsTaskApi";
 import { IBillApi } from "../interfaces/IBillApi";
 import { IWorkflowDefinitionApi } from "../interfaces/IWorkflowDefinitionApi";
@@ -55,6 +58,8 @@ import { SessionLawsApi } from "./Lists/SessionLawsApi";
 import { IRollCallApi } from "../interfaces/IRollCallApi";
 import { DocumentLibraryApi } from "./Lists/DocumentLibraryApi";
 import { FiscalSeriesApi, FiscalFundApi, AgencyContactApi } from "./Lists/FiscalDataApi";
+import { MockSubjectIndexApi } from "./Mock/MockSubjectIndexApi";
+import { SubjectIndexApi } from "./Lists/SubjectIndexApi";
 
 export class ApiHelper {
     public getConfigurationApi(isLocalEnvironment: boolean): ILmsConfigurationApi {
@@ -135,6 +140,10 @@ export class ApiHelper {
 
     public getFiscalSeries(isLocalEnvironment: boolean): IListApi<IFiscalSeries> {
         return new FiscalSeriesApi();
+    }
+
+    public getSubjectIndexApi(isLocalEnvironment: boolean): IListApi<ISubjectIndices> {
+        return isLocalEnvironment ? new MockSubjectIndexApi() : new SubjectIndexApi();
     }
 }
 

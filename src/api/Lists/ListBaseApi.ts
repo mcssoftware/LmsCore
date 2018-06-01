@@ -1,13 +1,14 @@
-import { IListApi, IList, IContentType } from "../../exports/interfaces";
+import { IListApi, IList, IContentType, IBatchCreationData, IBatchUpdateData, IBatchDeleteData } from "../../exports/interfaces";
 import * as pnp from "sp-pnp-js";
 import {
     TypedHash, PagedItemCollection, Web, ODataBatch,
-    ItemAddResult, ItemUpdateResult,
+    ItemAddResult, ItemUpdateResult, List,
 } from "sp-pnp-js";
 import { McsUtil } from "../../libraries/util";
 import { config } from "../../LmsCore";
 
 // tslint:disable:prefer-const
+// tslint:disable:space-before-function-paren
 export class ListBaseApi<T> implements IListApi<T>  {
     public listTitle: string;
     public useCaching: boolean;
@@ -110,16 +111,22 @@ export class ListBaseApi<T> implements IListApi<T>  {
             this.getWeb().lists.getByTitle(this.listTitle).getListItemEntityTypeFullName();
     }
 
-    public addNewItemInBatch(batch: ODataBatch, properties: TypedHash<any>): Promise<ItemAddResult> {
-        return this.getWeb().lists.getByTitle(this.listTitle).items.inBatch(batch).add(properties);
+    public addNewItemInBatch(data: IBatchCreationData[], itemEntityType?: string): Promise<IBatchCreationData[]> {
+        if (McsUtil.isString(itemEntityType)) {
+            return this._addNewItemInBatchInternal(this.getWeb().lists.getByTitle(this.listTitle), itemEntityType, data, 0);
+        } else {
+            return this.ensureListItemEntityTypeName().then((entityType) => {
+                return this._addNewItemInBatchInternal(this.getWeb().lists.getByTitle(this.listTitle), entityType, data, 0);
+            });
+        }
     }
 
-    public updateItemInBatch(batch: ODataBatch, id: number, listItemEntityTypeFullName: string, properties: TypedHash<any>): Promise<ItemUpdateResult> {
-        return this.getWeb().lists.getByTitle(this.listTitle).items.getById(id).inBatch(batch).update(properties);
+    public updateItemInBatch(data: IBatchUpdateData[]): Promise<IBatchUpdateData[]> {
+        return this._updateItemInBatchInternal(this.getWeb().lists.getByTitle(this.listTitle), data, 0);
     }
 
-    public getBatch(): ODataBatch {
-        return this.getWeb().createBatch();
+    public deleteItemInBatch(data: IBatchDeleteData[]): Promise<void> {
+        return this._deleteItemInBatchInternal(this.getWeb().lists.getByTitle(this.listTitle), data, 0);
     }
 
     public getSelects(): string[] {
@@ -134,7 +141,7 @@ export class ListBaseApi<T> implements IListApi<T>  {
         return [field + "/Id", field + "/Title", field + "/EMail"];
     }
 
-    private _getRestData(filter?: string, select?: string[], expand?: string[], orderBy?: string, ascending?: boolean, skip?: number, top?: number): Promise<T[]> {
+    private _getRestData(filter?: string, select?: string[], expand?: string[], orderBy?: string, ascending?: boolean, skip?: number, itemCount?: number): Promise<T[]> {
         return new Promise<T[]>((resolve, reject) => {
             let result: T[] = [];
             if (!McsUtil.isString(filter)) {
@@ -152,7 +159,8 @@ export class ListBaseApi<T> implements IListApi<T>  {
             if (!McsUtil.isArray(expand)) {
                 listExpand = this.getExpands();
             }
-            top = top || 100;
+            const getAllItems: boolean = typeof itemCount === "undefined" || itemCount === null;
+            itemCount = itemCount || 100;
             skip = skip || 0;
             // tslint:disable-next-line:typedef
             let listItems: any = this.getWeb().lists.getByTitle(this.listTitle).items
@@ -170,9 +178,9 @@ export class ListBaseApi<T> implements IListApi<T>  {
                 listItems.select(...listSelect)
                     .expand(...listExpand)
                     .skip(skip)
-                    .top(top).getPaged().then((value) => {
+                    .top(itemCount).getPaged().then((value) => {
                         result = value.results as T[];
-                        if (value.hasNext) {
+                        if (getAllItems && value.hasNext) {
                             this._getNextPages(value, []).then((pagedResult) => {
                                 result = result.concat(pagedResult);
                                 resolve(result);
@@ -187,9 +195,9 @@ export class ListBaseApi<T> implements IListApi<T>  {
                 listItems.select(...listSelect)
                     .expand(...listExpand)
                     .skip(skip)
-                    .top(top).getPaged().then((value) => {
+                    .top(itemCount).getPaged().then((value) => {
                         result = value.results as T[];
-                        if (value.hasNext) {
+                        if (getAllItems && value.hasNext) {
                             this._getNextPages(value, []).then((pagedResult) => {
                                 result = result.concat(pagedResult);
                                 resolve(result);
@@ -299,5 +307,89 @@ export class ListBaseApi<T> implements IListApi<T>  {
         //         resolve([]);
         //     });
         // });
+    }
+
+    private _addNewItemInBatchInternal(list: List, itemEntityType: string, data: IBatchCreationData[], index: number = 0): Promise<IBatchCreationData[]> {
+        const batchSize: number = 50;
+        return new Promise((resolve, reject) => {
+            if (data.length > index) {
+                const batch: ODataBatch = this.getWeb().createBatch();
+                for (let len: number = index + batchSize; index < len && index < data.length; index += 1) {
+                    const dataItems: IBatchCreationData = data[index];
+                    // tslint:disable-next-line:typedef
+                    let success = (function (res: ItemAddResult) {
+                        this.result = res.data;
+                    }).bind(dataItems);
+                    // tslint:disable-next-line:typedef
+                    let error = (function (err) {
+                        this.error = err;
+                    }).bind(dataItems);
+                    list.items.inBatch(batch).add(dataItems.item, itemEntityType).then(success).catch(error);
+                }
+                batch.execute().then(() => {
+                    this._addNewItemInBatchInternal(list, itemEntityType, data, index);
+                }).catch(() => {
+                    this._addNewItemInBatchInternal(list, itemEntityType, data, index);
+                });
+            } else {
+                resolve(data);
+            }
+        });
+    }
+
+    private _updateItemInBatchInternal(list: List, data: IBatchUpdateData[], index: number = 0): Promise<IBatchUpdateData[]> {
+        const batchSize: number = 50;
+        return new Promise((resolve, reject) => {
+            if (data.length > index) {
+                const batch: ODataBatch = this.getWeb().createBatch();
+                for (let len: number = index + batchSize; index < len && index < data.length; index += 1) {
+                    const dataItems: IBatchUpdateData = data[index];
+                    // tslint:disable-next-line:typedef
+                    let success = (function (res: ItemUpdateResult) {
+                        this.result = res.data;
+                    }).bind(dataItems);
+                    // tslint:disable-next-line:typedef
+                    let error = (function (err) {
+                        this.error = err;
+                    }).bind(dataItems);
+                    list.items.getById(dataItems.Id).inBatch(batch).update(dataItems.item, "*", dataItems.itemEntityType).then(success).catch(error);
+                }
+                batch.execute().then(() => {
+                    this._updateItemInBatchInternal(list, data, index);
+                }).catch(() => {
+                    this._updateItemInBatchInternal(list, data, index);
+                });
+            } else {
+                resolve(data);
+            }
+        });
+    }
+
+    private _deleteItemInBatchInternal(list: List, data: IBatchDeleteData[], index: number = 0): Promise<void> {
+        const batchSize: number = 50;
+        return new Promise((resolve, reject) => {
+            if (data.length > index) {
+                const batch: ODataBatch = this.getWeb().createBatch();
+                for (let len: number = index + batchSize; index < len && index < data.length; index += 1) {
+                    const dataItems: IBatchDeleteData = data[index];
+                    // tslint:disable-next-line:typedef
+                    let success = (function () {
+                        this.result = true;
+                    }).bind(dataItems);
+                    // tslint:disable-next-line:typedef
+                    let error = (function (err) {
+                        this.error = err;
+                    }).bind(dataItems);
+                    list.items.getById(dataItems.Id).inBatch(batch).delete("*").then(success).catch(error);
+                }
+                batch.execute().then(() => {
+                    this._deleteItemInBatchInternal(list, data, index);
+                }).catch(() => {
+                    this._deleteItemInBatchInternal(list, data, index);
+                });
+            } else {
+                resolve();
+            }
+        });
     }
 }

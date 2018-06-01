@@ -1,5 +1,6 @@
 export * from "../interfaces/IActionDefinitionApi";
 export * from "../interfaces/IAmendmentApi";
+export * from "../interfaces/IBatchExecution";
 export * from "../interfaces/IBillApi";
 export * from "../interfaces/IBillDigestApi";
 export * from "../interfaces/ICommitteesApi";

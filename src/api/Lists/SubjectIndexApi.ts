@@ -7,7 +7,7 @@ import { config } from "../../LmsCore";
 export class SubjectIndexApi extends ListBaseApi<ISubjectIndices> {
     constructor() {
         super();
-        this.listTitle = Constants.Lists.Tasks;
+        this.listTitle = Constants.Lists.SubjectIndices;
         this.useCaching = true;
     }
 

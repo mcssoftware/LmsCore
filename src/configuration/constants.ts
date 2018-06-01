@@ -17,7 +17,7 @@ export namespace Constants {
         public static FiscalSeries = "Fiscal Series";
         public static LMSTemplates = "LMSTemplates";
         public static LSOPersonnel = "LSOPersonnel";
-        public static SubjectIndices = "SubjectIndices";
+        public static SubjectIndices = "Subject Indices";
         public static Amendments = "Amendments";
         public static BillDigest = "Bill Digest";
         public static BillDocuments = "BillDocuments";
